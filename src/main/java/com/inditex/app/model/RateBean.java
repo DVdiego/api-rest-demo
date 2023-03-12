@@ -9,26 +9,26 @@ import java.sql.Timestamp;
 public class RateBean {
 
     @JsonProperty("productId")
-    Long productId;
+    private Long productId;
 
     @JsonProperty("brandId")
-    Integer brandId;
+    private Integer brandId;
 
     @JsonProperty("rateApply")
-    String rateApply;
+    private String rateApply;
 
     @JsonProperty("startDate")
-    Timestamp startDate;
+    private Timestamp startDate;
 
     @JsonProperty("endDate")
-    Timestamp endDate;
+    private Timestamp endDate;
 
     @JsonProperty("price")
     // You should never use float and double for monetary operations
-    BigDecimal price;
+    private BigDecimal price;
 
     @JsonProperty("curr")
-    String curr;
+    private String curr;
 
     public RateBean(PriceBean priceBean) {
         this.productId = priceBean.getProductId();
