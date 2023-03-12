@@ -68,7 +68,6 @@ class ApiRestControllerTest {
 
     @Test
     void whenListIsEmptyNoContent_testGetAll() throws Exception {
-        //Mockito.when(service.getAll()).thenReturn(new ArrayList<>());
         mockMvc.perform(get("/api/rate/all")).andExpect(status().isNoContent());
     }
 
