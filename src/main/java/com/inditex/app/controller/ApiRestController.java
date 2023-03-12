@@ -60,8 +60,10 @@ public class ApiRestController {
                                   @PathVariable String brand) {
 
         try {
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd-hh.mm.ss");
-            Date parsedDate = dateFormat.parse(date);
+            // SimpleDateFormat is not thread-safe, so each thread will have its own SimpleDateFormat
+            ThreadLocal<SimpleDateFormat> dateFormat = ThreadLocal.withInitial(
+                    ()-> new SimpleDateFormat("yyyy-MM-dd-hh.mm.ss"));
+            Date parsedDate = dateFormat.get().parse(date);
 
             final Timestamp applyDate = new Timestamp(parsedDate.getTime());
             final Long productId = Long.parseLong(product);
